@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:jaspr/jaspr.dart';
+// import 'package:jaspr_bloc/src/test/test1.dart';
 import 'package:jaspr_provider/jaspr_provider.dart';
 
 /// Mixin which allows `MultiBlocProvider` to infer the types
@@ -34,9 +35,7 @@ mixin BlocProviderSingleChildComponent on SingleChildComponent {}
 /// ```
 ///
 /// {@endtemplate}
-class BlocProvider<T extends StateStreamableSource<Object?>>
-    extends SingleChildStatelessComponent
-    with BlocProviderSingleChildComponent {
+class BlocProvider<T extends StateStreamableSource<Object?>> extends SingleChildStatelessComponent with BlocProviderSingleChildComponent {
   /// {@macro bloc_provider}
   const BlocProvider({
     Key? key,
@@ -112,6 +111,11 @@ class BlocProvider<T extends StateStreamableSource<Object?>>
     }
   }
 
+  // @override
+  // Iterable<Component> buildWithChild(BuildContext context, Component? child) {
+  //   throw UnimplementedError();
+  // }
+
   @override
   Iterable<Component> buildWithChild(
     BuildContext context,
@@ -139,12 +143,13 @@ class BlocProvider<T extends StateStreamableSource<Object?>>
   }
 
   static VoidCallback _startListening(
-    InheritedContext<StateStreamable?> e,
+    BuildContext e, // InheritedContext<StateStreamable?> e,
     StateStreamable value,
   ) {
-    final subscription = value.stream.listen(
-      (dynamic _) => e.markNeedsNotifyDependents(),
-    );
-    return subscription.cancel;
+    return () {};
+    // final subscription = value.stream.listen(
+    //   (dynamic _) => e.markNeedsNotifyDependents(),
+    // );
+    // return subscription.cancel;
   }
 }

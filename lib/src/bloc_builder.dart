@@ -45,7 +45,6 @@ typedef BlocBuilderCondition<S> = bool Function(S previous, S current);
 /// ```
 /// {@endtemplate}
 ///
-/// {@template bloc_builder_build_when}
 /// An optional [buildWhen] can be implemented for more granular control over
 /// how often [BlocBuilder] rebuilds.
 /// [buildWhen] should only be used for performance optimizations as it
@@ -70,8 +69,7 @@ typedef BlocBuilderCondition<S> = bool Function(S previous, S current);
 /// )
 /// ```
 /// {@endtemplate}
-class BlocBuilder<B extends StateStreamable<S>, S>
-    extends BlocBuilderBase<B, S> {
+class BlocBuilder<B extends StateStreamable<S>, S> extends BlocBuilderBase<B, S> {
   /// {@macro bloc_builder}
   /// {@macro bloc_builder_build_when}
   const BlocBuilder({
@@ -88,8 +86,7 @@ class BlocBuilder<B extends StateStreamable<S>, S>
   final BlocComponentBuilder<S> builder;
 
   @override
-  Iterable<Component> build(BuildContext context, S state) =>
-      builder(context, state);
+  Iterable<Component> build(BuildContext context, S state) => builder(context, state);
 }
 
 /// {@template bloc_builder_base}
@@ -100,8 +97,7 @@ class BlocBuilder<B extends StateStreamable<S>, S>
 /// so far. The type of the state and how it is updated with each interaction
 /// is defined by sub-classes.
 /// {@endtemplate}
-abstract class BlocBuilderBase<B extends StateStreamable<S>, S>
-    extends StatefulComponent {
+abstract class BlocBuilderBase<B extends StateStreamable<S>, S> extends StatefulComponent {
   /// {@macro bloc_builder_base}
   const BlocBuilderBase({
     this.bloc,
@@ -122,8 +118,7 @@ abstract class BlocBuilderBase<B extends StateStreamable<S>, S>
   State<BlocBuilderBase<B, S>> createState() => _BlocBuilderBaseState<B, S>();
 }
 
-class _BlocBuilderBaseState<B extends StateStreamable<S>, S>
-    extends State<BlocBuilderBase<B, S>> {
+class _BlocBuilderBaseState<B extends StateStreamable<S>, S> extends State<BlocBuilderBase<B, S>> {
   late B _bloc;
   late S _state;
 

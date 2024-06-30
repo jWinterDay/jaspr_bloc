@@ -43,7 +43,6 @@ typedef BlocListenerCondition<S> = bool Function(S previous, S current);
 /// ```
 /// {@endtemplate}
 ///
-/// {@template bloc_listener_listen_when}
 /// An optional [listenWhen] can be implemented for more granular control
 /// over when [listener] is called.
 /// [listenWhen] will be invoked on each [bloc] `state` change.
@@ -66,8 +65,7 @@ typedef BlocListenerCondition<S> = bool Function(S previous, S current);
 /// )
 /// ```
 /// {@endtemplate}
-class BlocListener<B extends StateStreamable<S>, S>
-    extends BlocListenerBase<B, S> {
+class BlocListener<B extends StateStreamable<S>, S> extends BlocListenerBase<B, S> {
   /// {@macro bloc_listener}
   /// {@macro bloc_listener_listen_when}
   const BlocListener({
@@ -93,8 +91,7 @@ class BlocListener<B extends StateStreamable<S>, S>
 /// The type of the state and what happens with each state change
 /// is defined by sub-classes.
 /// {@endtemplate}
-abstract class BlocListenerBase<B extends StateStreamable<S>, S>
-    extends StatefulComponent {
+abstract class BlocListenerBase<B extends StateStreamable<S>, S> extends StatefulComponent {
   /// {@macro bloc_listener_base}
   const BlocListenerBase({
     Key? key,
@@ -123,8 +120,7 @@ abstract class BlocListenerBase<B extends StateStreamable<S>, S>
   State<BlocListenerBase<B, S>> createState() => _BlocListenerBaseState<B, S>();
 }
 
-class _BlocListenerBaseState<B extends StateStreamable<S>, S>
-    extends State<BlocListenerBase<B, S>> {
+class _BlocListenerBaseState<B extends StateStreamable<S>, S> extends State<BlocListenerBase<B, S>> {
   StreamSubscription<S>? _subscription;
   late B _bloc;
   late S _previousState;

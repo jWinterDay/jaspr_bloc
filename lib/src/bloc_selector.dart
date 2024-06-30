@@ -5,7 +5,6 @@ import 'package:jaspr_bloc/jaspr_bloc.dart';
 /// is responsible for returning a selected value, [T], based on [state].
 typedef BlocComponentSelector<S, T> = T Function(S state);
 
-/// {@template bloc_selector}
 /// [BlocSelector] is analogous to [BlocBuilder] but allows developers to
 /// filter updates by selecting a new value based on the bloc state.
 /// Unnecessary builds are prevented if the selected value does not change.
@@ -24,8 +23,7 @@ typedef BlocComponentSelector<S, T> = T Function(S state);
 /// )
 /// ```
 /// {@endtemplate}
-class BlocSelector<B extends StateStreamable<S>, S, T>
-    extends StatefulComponent {
+class BlocSelector<B extends StateStreamable<S>, S, T> extends StatefulComponent {
   /// {@macro bloc_selector}
   const BlocSelector({
     Key? key,
@@ -53,8 +51,7 @@ class BlocSelector<B extends StateStreamable<S>, S, T>
   State<BlocSelector<B, S, T>> createState() => _BlocSelectorState<B, S, T>();
 }
 
-class _BlocSelectorState<B extends StateStreamable<S>, S, T>
-    extends State<BlocSelector<B, S, T>> {
+class _BlocSelectorState<B extends StateStreamable<S>, S, T> extends State<BlocSelector<B, S, T>> {
   late B _bloc;
   late T _state;
 
